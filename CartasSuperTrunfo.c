@@ -8,25 +8,26 @@
 
 int main() {
 
-    // dados do jogador
+// dados do jogador
     char    nick[50] = "Mario" ;
 
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-
-    char   estado1     =  'a'        , estado2       =  'b'    ;
-    char   codigo1[5]  =  "01"       , codigo2[5]    =  "02"   ;
-    char   cidade1[50] =  "aaa"      , cidade2[50]   =  "bbb"  ;
-    int    populacao1  =   1         , populacao2    =   2     ;
-    float  area1       =   1.1       , area2         =   2.2   ;
-    float  pib1        =   1.1       , pib2          =   2.2   ;
-    int    turismo1    =   1         , turismo2      =   2     ;
-
-
     
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
+// variaveis das cartas
+
+    char   estado1     =  'a'        , estado2     =  'b'    ;
+    char   codigo1[5]  =  "01"       , codigo2[5]  =  "02"   ;
+    char   cidade1[50] =  "aaa"      , cidade2[50] =  "bbb"  ;
+    int    populacao1  =   1         , populacao2  =   2     ;
+    float  area1       =   1.1       , area2       =   2.2   ;
+    float  pib1        =   1.1       , pib2        =   2.2   ;
+    int    turismo1    =   1         , turismo2    =   2     ;
+
+    float  pib_pc1     =   1.1       , pib_pc2     =   1.1   ;
+    float  dens_Pop1   =   1.1       , dens_Pop2   =   1.1   ;
+
+
+
+// interação com o jogador
 
     printf ("Seja bem vindo(a) ao Super_Trunfo!\n\nEscolha eu nick: \n");
     fgets (nick,50,stdin);
@@ -95,15 +96,28 @@ int main() {
                 scanf (" %d",&turismo2);
 
 
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
 
-    printf ("\n\nAs suas cartas foram registradas com sucesso!\n\n");
 
-printf ("CARTA 1\nEstado         :  %c\nCodigo         :  %c%s\nCidade         :  %s\nPopulação      :  %d\nÁrea           :  %.2f Km²\nPIB            :  %.2f bilhões de reais\nPts Turísticos :  %d\n\n" , estado1 , estado1 , codigo1 , cidade1 , populacao1 , area1 , pib1 , turismo1);
+// calculo das novas propriedades
 
-printf ("CARTA 2\nEstado         :  %c\nCodigo         :  %c%s\nCidade         :  %s\nPopulação      :  %d\nÁrea           :  %.2f Km²\nPIB            :  %.2f bilhões de reais\nPts Turísticos :  %d\n\n" , estado2 , estado2 , codigo2 , cidade2 , populacao2 , area2 , pib2 , turismo2);
+    dens_Pop1 = (float) populacao1 / area1;
+
+    dens_Pop2 = (float) populacao2 / area2;
+
+    pib_pc1   = (float) pib1 * 1000000000 / populacao1;
+
+    pib_pc2   = (float) pib2 * 1000000000 / populacao2;
+
+
+
+
+// exibição das cartas
+
+printf ("\n\nAs suas cartas foram registradas com sucesso!\n\n");
+
+printf ("CARTA 1\nEstado:  %c\nCodigo:  %c%s\nCidade:  %s\nPopulação:  %d\nÁrea:  %.2f Km²\nPIB:  %.2f bilhões de reais\nPts Turísticos:  %d\nDensidade Populacional:  %.2f hab/km²\nPIB per Capita:  %.2f reais\n\n" , estado1 , estado1 , codigo1 , cidade1 , populacao1 , area1 , pib1 , turismo1 , dens_Pop1, pib_pc1);
+
+printf ("CARTA 2\nEstado:  %c\nCodigo:  %c%s\nCidade:  %s\nPopulação:  %d\nÁrea:  %.2f Km²\nPIB:  %.2f bilhões de reais\nPts Turísticos:  %d\nDensidade Populacional:  %.2f hab/km²\nPIB per Capita:  %.2f reais\n\n" , estado2 , estado2 , codigo2 , cidade2 , populacao2 , area2 , pib2 , turismo2, dens_Pop2 , pib_pc2);
 
     return 0;
 }
